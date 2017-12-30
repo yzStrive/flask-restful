@@ -1,0 +1,23 @@
+# https://github.com/docker-library/docs/tree/master/nginx
+version: "3.3"
+
+services:
+  web:
+    restart: always
+    build: ./web-app
+    expose:
+      - "5000"
+    volumes:
+      - ./web-app/app:/home/www/app
+    command: "gunicorn -w 4 -b :5000 app:app"
+  nginx:
+    restart: always
+    image: nginx
+    volumes:
+      - ./config/nginx_gunicorn_proxy.conf:/etc/nginx/conf.d/nginx_flask.conf
+      - type: bind
+        source: ./web-app/app/static
+        target: /home/www/app/static
+    ports:
+      - "80:80"
+    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/nginx_flask.conf > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
