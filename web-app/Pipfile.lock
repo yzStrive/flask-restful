@@ -1,0 +1,148 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "61968d9087229b6eb0a9a6ba395e92725d2d71fc3524d4f98f4306ed79488d46"
+        },
+        "host-environment-markers": {
+            "implementation_name": "cpython",
+            "implementation_version": "3.5.0",
+            "os_name": "posix",
+            "platform_machine": "x86_64",
+            "platform_python_implementation": "CPython",
+            "platform_release": "16.7.0",
+            "platform_system": "Darwin",
+            "platform_version": "Darwin Kernel Version 16.7.0: Thu Jun 15 17:36:27 PDT 2017; root:xnu-3789.70.16~2/RELEASE_X86_64",
+            "python_full_version": "3.5.0",
+            "python_version": "3.5",
+            "sys_platform": "darwin"
+        },
+        "pipfile-spec": 6,
+        "requires": {},
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://mirrors.aliyun.com/pypi/simple/",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "aniso8601": {
+            "hashes": [],
+            "version": "==1.3.0"
+        },
+        "attrs": {
+            "hashes": [],
+            "version": "==17.4.0"
+        },
+        "certifi": {
+            "hashes": [],
+            "version": "==2017.11.5"
+        },
+        "chardet": {
+            "hashes": [],
+            "version": "==3.0.4"
+        },
+        "click": {
+            "hashes": [],
+            "version": "==6.7"
+        },
+        "crcmod": {
+            "hashes": [],
+            "version": "==1.7"
+        },
+        "flask": {
+            "hashes": [],
+            "version": "==0.12.2"
+        },
+        "flask-restful": {
+            "hashes": [],
+            "version": "==0.3.6"
+        },
+        "gunicorn": {
+            "hashes": [],
+            "version": "==19.7.1"
+        },
+        "idna": {
+            "hashes": [],
+            "version": "==2.6"
+        },
+        "itsdangerous": {
+            "hashes": [],
+            "version": "==0.24"
+        },
+        "jinja2": {
+            "hashes": [],
+            "version": "==2.10"
+        },
+        "lxml": {
+            "hashes": [],
+            "version": "==4.1.1"
+        },
+        "markupsafe": {
+            "hashes": [],
+            "version": "==1.0"
+        },
+        "oss2": {
+            "hashes": [],
+            "version": "==2.4.0"
+        },
+        "pdfminer3k": {
+            "hashes": [],
+            "version": "==1.3.1"
+        },
+        "pluggy": {
+            "hashes": [],
+            "version": "==0.6.0"
+        },
+        "ply": {
+            "hashes": [],
+            "version": "==3.10"
+        },
+        "py": {
+            "hashes": [],
+            "version": "==1.5.2"
+        },
+        "pyexecjs": {
+            "hashes": [],
+            "version": "==1.5.0"
+        },
+        "pytest": {
+            "hashes": [],
+            "version": "==3.3.2"
+        },
+        "python-dateutil": {
+            "hashes": [],
+            "version": "==2.6.1"
+        },
+        "python-docx": {
+            "hashes": [],
+            "version": "==0.8.6"
+        },
+        "pytz": {
+            "hashes": [],
+            "version": "==2017.3"
+        },
+        "requests": {
+            "hashes": [],
+            "version": "==2.18.4"
+        },
+        "six": {
+            "hashes": [],
+            "version": "==1.11.0"
+        },
+        "tzlocal": {
+            "hashes": [],
+            "version": "==1.5.1"
+        },
+        "urllib3": {
+            "hashes": [],
+            "version": "==1.22"
+        },
+        "werkzeug": {
+            "hashes": [],
+            "version": "==0.13"
+        }
+    },
+    "develop": {}
+}
