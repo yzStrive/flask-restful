@@ -1,0 +1,113 @@
+<!-- <h1> hello,world ,this index page</h1> -->
+
+<head>
+    <title>hi</title>
+</head>
+
+<body>
+    <div style="margin-left:50%">
+        <div id="main">
+            <input id="upload" type="file" />
+        </div>
+        <span id="msg"></span>
+    </div>
+</body>
+<script>
+    var upload_inp = document.getElementById('upload')
+    var msgSpan = document.getElementById('msg')
+    var onchange = function (e) {
+        var file = e.target.files[0];
+        if (!file || file.size >= 1024 * 1024 * 5) { //5Mb
+            return;
+        }
+        var form_data = new FormData()
+        form_data.append('file_data', file)
+        // // form_data.
+        var url = '/upload';
+        var method = 'POST';
+        var xhr = ajax(url, method, form_data)
+        msgSpan.innerText = '上传中'
+        xhr.upload.onprogress = function (e) {
+            console.log("upload progress:", e.loaded / e.total * 100 + "%");
+        }
+        xhr.upload.onload = function () {
+            console.log("upload onload.");
+            msgSpan.innerText = '上传完成'
+            setTimeout(function () {
+                msgSpan.innerText = '翻译中....,请耐心等待!'
+            }, 1000)
+        };
+        xhr.onload = function () {
+            try {
+                console.log(xhr.responseText)
+                var result = JSON.parse(xhr.responseText)
+                if (result.code === 200) {
+                    var main = document.getElementById('main')
+                    var data = result.data;
+                    ec_a = create_li_ele(data['ec_url'], '下载链接1（包含英文）')
+                    oc_a = create_li_ele(data['oc_url'], '下载链接2（只有中文）')
+                    var ul = document.createElement('ul');
+                    ul.appendChild(ec_a)
+                    ul.appendChild(oc_a)
+                    main.appendChild(ul)
+                    console.log("upload success.");
+                    msgSpan.innerText = ''
+                    msgSpan.style.display = 'none'
+                    // oc_a
+                }
+            }
+            catch (e) {
+                msgSpan.innerText = '发生错误，需要刷新页面重试！'
+            }
+
+        }
+    }
+    var create_li_ele = function (href, text) {
+        var li = document.createElement('li')
+        li.appendChild(create_msg_ele(href, text))
+        return li;
+    }
+    var create_msg_ele = function (href, text) {
+        if (href) {
+            var a = document.createElement('a');
+            a.href = href;
+            a.target = '_blank';
+            a.innerText = text;
+            return a;
+        } else {
+            var span = document.createElement('span');
+            span.innerText = 'error';
+            return span;
+        }
+
+    }
+    upload_inp.addEventListener('onchange', onchange);
+    var ajax = function (url, method, data) {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            try {
+                xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                try {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                    alert("您的浏览器暂不支持Ajax!");
+                }
+            }
+        }
+        xhr.onerror = function (e) {
+            console.log(e);
+        }
+        xhr.open(method, url);
+        try {
+            setTimeout(function () {
+                xhr.send(data);
+            });
+        } catch (e) {
+            console.log('error:', e);
+        }
+        return xhr;
+    }
+</script>

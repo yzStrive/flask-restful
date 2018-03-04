@@ -9,7 +9,8 @@ services:
       - "5000"
     volumes:
       - ./web-app/app:/home/www/app
-    command: "gunicorn -w 4 -b :5000 app:app"
+      #超时处理
+    command: "gunicorn -t 300 -w 4 -b :5000 app:app"
   nginx:
     restart: always
     image: nginx
@@ -19,5 +20,5 @@ services:
         source: ./web-app/app/static
         target: /home/www/app/static
     ports:
-      - "80:80"
+      - "8888:80"
     command: /bin/bash -c "envsubst < /etc/nginx/conf.d/nginx_flask.conf > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
